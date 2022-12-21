@@ -1,0 +1,12 @@
+- header:
+  + Số lượng ký tự của một chuỗi rác (random 10 - 20)
+  + Số lượng file cắt
+  + Hash của mật khẩu
+
+- id = hash(header + randomString)
+
+- Cấu trúc của một file sau khi cắt gồm:
+  + id
+  + header
+  + số thứ tự file cắt
+  + data sau khi hash
