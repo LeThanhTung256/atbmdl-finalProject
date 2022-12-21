@@ -10,3 +10,8 @@
   + header
   + số thứ tự file cắt
   + data sau khi hash
+
+- Tách dữ liệu ra các file:
+  + Độ dài của từng file là random bằng cách random vị trí cắt
+
+  
