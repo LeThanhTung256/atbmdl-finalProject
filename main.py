@@ -1,21 +1,24 @@
 from fileEncrypt import FileEncrypt
+from fileDecrypt import FileDecrypt
 from service import cipherAES, Positions
 import random
 import math
+import os
 
-# tmp = random.randbytes(40)
-# key = random.randbytes(16)
-# print(tmp.hex())
 
-# cipher = cipherAES(key, 9)
-# en = cipher.encrypt(tmp)
-# print(en.hex(), len(en))
-# print(cipher.decrypt(en).hex())
+# filename = 'image.jpg'
+# fiEn = FileEncrypt(4, 'adjasldjajdfoejfe', filename)
+# fiEn.run()
 
-filename = 'image.png'
-fiEn = FileEncrypt(4, 'adjasldjajdfoejfe', filename)
-fiEn.encrypt()
+folder = '.d54co9dg'
+files = ['.314tu7txt', '.mgi9f0txt', '.pgwx9stxt', '.pih3i8txt']
+for i in range(len(files)):
+    files[i] = folder + '/' + files[i]
+file = FileDecrypt('adjasldjajdfoejfe', files, 'decr.jpg')
+file.run()
 
+
+        
 
 
 

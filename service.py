@@ -1,6 +1,7 @@
 from Crypto.Cipher import AES
-from random import randbytes, randint
-import time
+from random import randbytes, randint, choice
+import string
+import os
 
 # Mã hoá khối data
 class cipherAES:
@@ -16,7 +17,7 @@ class cipherAES:
     # Mã hoá block data
     cipherText, tag = cipher.encrypt_and_digest(blockData)
 
-    # Return một chuỗi (64 + numOfTrash) bytes gồm: nonce(16 bytes) + tag(16 bytes) + cipherText(32 bytes) + trash
+    # Return một chuỗi bytes gồm: nonce(16 bytes) + tag(16 bytes) + cipherText + trash
     trash = randbytes(self.__numOfTrash)
     return cipher.nonce + tag + cipherText + trash
 
@@ -52,32 +53,49 @@ class Node:
         return value[property]
 
 class Positions:
-  def __init__(self, maxPosition: int, numberOfPos):
-    self.__listPos = [0, maxPosition]
-    self.__listNode = [Node(0, maxPosition)]
+  def __new__(cls, maxPosition: int, numberOfPos):
+    cls.__listPos = [0, maxPosition]
+    cls.__listNode = [Node(0, maxPosition)]
     for i in range(numberOfPos):
       # Tìm khoảng lớn nhất để lấy random
       maxSubIndex = 0
-      maxSub = self.__listNode[maxSubIndex].get('sub')
-      numberOfListNode = len(self.__listNode)
+      maxSub = cls.__listNode[maxSubIndex].get('sub')
+      numberOfListNode = len(cls.__listNode)
       if numberOfListNode > 1:
         for nodeIndex in range(numberOfListNode):
-          sub = self.__listNode[nodeIndex].get('sub')
+          sub = cls.__listNode[nodeIndex].get('sub')
           if sub > maxSub:
             maxSub = sub
             maxSubIndex = nodeIndex
       
       # Random một số
-      node = self.__listNode[maxSubIndex]
+      node = cls.__listNode[maxSubIndex]
       pos = randint(node.get('start') + 1, node.get('end') - 1)
 
       # Thêm poi vào list
-      self.__listPos.append(pos)
+      cls.__listPos.append(pos)
 
       # Thay đổi list Node
-      self.__listNode.extend([Node(node.get('start'), pos), Node(pos, node.get('end'))])
-      del self.__listNode[maxSubIndex]
+      cls.__listNode.extend([Node(node.get('start'), pos), Node(pos, node.get('end'))])
+      del cls.__listNode[maxSubIndex]
 
-  def generate(self):
-    return sorted(self.__listPos)
+    return sorted(cls.__listPos)
+
+# Tạo ra một chuỗi string ngẫu nhiên
+class RandomString:
+  def __new__(cls, length:int):
+    letters = string.ascii_lowercase + string.digits
+    text = ''.join(choice(letters) for i in range(length))
+    return text
+  
+# Tạo ra một forder ẩn để lưu file cut
+class HidenFolder:
+  def __new__(cls, length):
+    folder = '.' + RandomString(length)
+    while os.path.isdir(folder):
+      folder = '.' + RandomString(length)
+    
+    os.mkdir(folder)
+    return folder
+  
       
