@@ -1,10 +1,7 @@
-import random
 import hashlib
 import math
 
-from service import cipherAES
-from constant import const
-from message import message, messageType
+from service import cipherAES, message, messageType, const
 
 const = const()
 
