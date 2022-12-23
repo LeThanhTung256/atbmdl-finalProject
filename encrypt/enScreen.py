@@ -6,7 +6,6 @@ from mesScreen import Message
 from service import messageType
 from encrypt.fileEncrypt import FileEncrypt
 
-
 class encryptScreen:
     __screen = None
 
