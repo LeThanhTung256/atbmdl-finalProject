@@ -2,6 +2,7 @@ from Crypto.Cipher import AES
 from random import randbytes, randint, choice
 import string
 import os
+from enum import Enum
 
 # Mã hoá khối data
 class cipherAES:
@@ -97,5 +98,33 @@ class HidenFolder:
     
     os.mkdir(folder)
     return folder
-  
+
+class messageType(Enum):
+    SUCCESS = 0
+    FAIL = 1
+
+class message:
+    __text:str = ''
+    __type:messageType
+
+    def __init__(self, text:str, type:messageType):
+        self.__text = text
+        self.__type = type
+
+        if self.__type == messageType.SUCCESS:
+            print('SUCCESS: ' + self.__text)
+        elif self.__type == messageType.FAIL:
+            print('FAIL: ' + self.__text)
+
+def constant(f):
+    def fset(self, value):
+        raise TypeError
+    def fget(self):
+        return f()
+    return property(fget, fset)
+
+class const(object):
+    @constant
+    def blockSize():
+        return 32
       
