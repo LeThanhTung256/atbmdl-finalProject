@@ -26,3 +26,9 @@ messageLayout = [
     [pg.Text('', key='__MESSAGE__', pad=(80, 20), font='any 14')],
     [pg.Text(size=(5, 0)), pg.Button('Exit', key='__BUTTON__', pad=(0, 5))] 
 ]
+
+mainLayout = [
+    [pg.Text('File security', font='any 30 bold', pad=(None, 50), size=(20, None))],
+    [pg.Button('Encrypt file', font='any 20'), pg.Button('Decrypt file', font='any 20')],
+    [pg.T(size=(30, 0), pad=(None, 50)), pg.Button('Exit', font='any 19')]
+]
