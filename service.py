@@ -89,8 +89,8 @@ class RandomString:
     text = ''.join(choice(letters) for i in range(length))
     return text
   
-# Tạo ra một forder ẩn để lưu file cut
-class HidenFolder:
+# Tạo ra một folder ẩn để lưu file cut
+class HiddenFolder:
   def __new__(cls, length):
     folder = '.' + RandomString(length)
     while os.path.isdir(folder):

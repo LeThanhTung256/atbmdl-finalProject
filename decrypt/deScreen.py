@@ -54,4 +54,4 @@ class decryptScreen:
                 # Mã hoá file
                 FileDecrypt(password, files, fileName)
 
-        self.__screen.hide()
+        self.__screen.close()

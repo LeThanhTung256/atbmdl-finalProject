@@ -10,7 +10,7 @@ class encryptScreen:
     __screen = None
 
     def __init__(self) -> None:
-        self.__screen = pg.Window('Encrypt file', layout.encryptLayout, element_justification='center', finalize=True)
+        self.__screen = pg.Window('Encrypt file', layout.encryptLayout, element_justification='left', finalize=True)
 
     def run(self):
         if self.__screen != None:
@@ -18,7 +18,7 @@ class encryptScreen:
         
         while True:
             event, values = self.__screen.read()
-            if event in ['Exit', pg.WIN_CLOSED]:
+            if event == 'Exit' or event == pg.WIN_CLOSED:
                 break
             if event == "Encrypt":
                 # Kiểm tra file select
@@ -55,4 +55,4 @@ class encryptScreen:
                 isDelete = values['__IS_DELETE__']
                 FileEncrypt(numOfFiles, password, fileName, isDelete)
 
-        self.__screen.hide()
+        self.__screen.close()

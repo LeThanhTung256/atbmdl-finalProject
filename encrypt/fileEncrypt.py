@@ -4,7 +4,7 @@ import json
 import math
 import os
 
-from service import cipherAES, Positions, RandomString, HidenFolder, message, messageType, const
+from service import cipherAES, Positions, RandomString, HiddenFolder, message, messageType, const
 from mesScreen import Message
 const = const()
 
@@ -48,7 +48,7 @@ class FileEncrypt:
             len(cipherText), cls.__header['numOfFile'] - 1)
 
         # Tạo một hidden forder
-        folder = HidenFolder(8)
+        folder = HiddenFolder(8)
 
         for i in range(cls.__header['numOfFile']):
             # Encrypt(numOfFile + numOfTrash + indexOfFile + 13 byte trash) = 16 bytes
