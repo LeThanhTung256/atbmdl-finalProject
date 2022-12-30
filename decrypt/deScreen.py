@@ -10,11 +10,11 @@ class decryptScreen:
     __screen = None
 
     def __init__(self) -> None:
-        self.__screen = pg.Window('Decrypt file', layout.decryptLayout, element_justification='center', finalize=True)
+        self.__screen = pg.Window('DECRYPTION', layout.decryptLayout, element_justification='left', finalize=True)
 
     def run(self):
-        if self.__screen != None:
-            self.__screen.un_hide()
+        # if self.__screen != None:
+        #     self.__screen.un_hide()
         
         while True:
             event, values = self.__screen.read()

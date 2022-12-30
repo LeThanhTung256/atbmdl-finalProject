@@ -10,11 +10,11 @@ class encryptScreen:
     __screen = None
 
     def __init__(self) -> None:
-        self.__screen = pg.Window('Encrypt file', layout.encryptLayout, element_justification='left', finalize=True)
+        self.__screen = pg.Window('ENCRYPTION', layout.encryptLayout, element_justification='left', finalize=True)
 
     def run(self):
-        if self.__screen != None:
-            self.__screen.un_hide()
+        # if self.__screen != None:
+        #     self.__screen.un_hide()
         
         while True:
             event, values = self.__screen.read()
