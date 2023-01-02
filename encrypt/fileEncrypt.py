@@ -47,7 +47,7 @@ class FileEncrypt:
         positions = Positions(
             len(cipherText), cls.__header['numOfFile'] - 1)
 
-        # Tạo một hidden forder
+        # Tạo một hidden folder
         folder = HiddenFolder(8)
 
         for i in range(cls.__header['numOfFile']):
@@ -64,14 +64,15 @@ class FileEncrypt:
 
             # Tạo ngẫu nhiên tên file gồm 6 ký tự
             fileName = folder + '/.' + RandomString(6)
-            with open(fileName + 'txt', 'wb') as file:
+            with open(fileName, 'wb') as file:
                 file.write(dataFile)
                 file.close()
+            os.system("attrib +h " + fileName)
             
         # Xoá file ban đầu
         if deleteFile == True:
             os.remove(cls.__fileName)
         
-        message('Mã hoá file thành công', messageType.SUCCESS)
-        Message('Mã hoá file thành công', messageType.SUCCESS)
+        message('File encrypted successfully', messageType.SUCCESS)
+        Message('File encrypted successfully', messageType.SUCCESS)
         

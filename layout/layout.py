@@ -33,6 +33,6 @@ decryptLayout = [
 
 messageLayout = [
     [pg.Text('', key='__TITLE__', pad=(None, 10), font='any 20')],
-    [pg.Text('', key='__MESSAGE__', pad=(80, 20), font='any 14')],
-    [pg.Text(size=(5, 0)), pg.Button('Exit', key='__BUTTON__', pad=(0, 5))] 
+    [pg.Text('', key='__MESSAGE__', pad=(80, (0, 30)), font='any 14')],
+    [pg.Button('Exit', key='__BUTTON__', pad=(0, 5))]
 ]

@@ -2,6 +2,8 @@ from Crypto.Cipher import AES
 from random import randbytes, randint, choice
 import string
 import os
+import ctypes
+FILE_ATTRIBUTE_HIDDEN = 0x02
 from enum import Enum
 
 # Mã hoá khối data
@@ -97,6 +99,7 @@ class HiddenFolder:
       folder = '.' + RandomString(length)
     
     os.mkdir(folder)
+    os.system("attrib +h " + folder + " /d")
     return folder
 
 class messageType(Enum):

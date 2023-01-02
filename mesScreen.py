@@ -8,7 +8,7 @@ class Message:
 
     def __new__(cls, message, type):
         if cls.__screen == None:
-            cls.__screen = pg.Window('', messageLayout, finalize=True, element_justification='center')
+            cls.__screen = pg.Window('FAILED!', messageLayout, finalize=True, element_justification='center')
         if cls.__screen != None:
             cls.__screen.un_hide()
         if type == messageType.FAIL:
